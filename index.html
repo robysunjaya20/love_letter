@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMMI Love Letter Untold</title>
+
+<style>
+body{
+  font-family:Roboto,Arial;
+  background:#f0ebf8;
+  padding:40px;
+}
+
+.form-box{
+  max-width:640px;
+  margin:auto;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.15);
+}
+
+.header{
+  border-top:8px solid #673ab7;
+}
+
+h1{
+  margin:0;
+  font-size:26px;
+}
+
+.desc{
+  margin-top:10px;
+  color:#555;
+}
+
+label{
+  font-weight:600;
+}
+
+.required{
+  color:red;
+}
+
+input,textarea{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+textarea{
+  height:100px;
+  resize:none;
+}
+
+button{
+  background:#673ab7;
+  color:white;
+  border:none;
+  padding:12px 22px;
+  border-radius:6px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#5b33a6;
+}
+
+.footer{
+  font-size:12px;
+  color:#777;
+  margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+<div class="card header">
+<h1>HMMI Love Letter Untold</h1>
+<p class="desc">
+Ketika Anda mengirimkan formulir ini, itu tidak akan secara otomatis mengumpulkan detail Anda seperti nama dan alamat email kecuali Anda memberikannya sendiri.
+</p>
+<p><b>Wajib diisi</b></p>
+</div>
+
+<div class="card">
+<label>1. From <span class="required">*</span></label>
+<input id="from" placeholder="Masukkan jawaban Anda">
+</div>
+
+<div class="card">
+<label>2. To <span class="required">*</span></label>
+<input id="to" placeholder="Masukkan jawaban Anda">
+</div>
+
+<div class="card">
+<label>3. Tuliskan Tiga Pesan Yang ingin disampaikan <span class="required">*</span></label>
+<textarea id="pesan1" placeholder="Pesan pertama"></textarea>
+<textarea id="pesan2" placeholder="Pesan kedua"></textarea>
+<textarea id="pesan3" placeholder="Pesan ketiga"></textarea>
+</div>
+
+<div class="card">
+<label>4. Remark</label>
+<textarea id="remark" placeholder="Masukkan jawaban Anda"></textarea>
+</div>
+
+<button onclick="kirim()">Kirim</button>
+
+<div id="status" style="margin-top:15px;font-weight:600;"></div>
+
+<div class="footer">
+Jangan pernah memberitahukan kata sandi Anda. Laporkan penyalahgunaan
+</div>
+
+</div>
+
+<script>
+const API="https://script.google.com/macros/s/AKfycbyJ7SfcttmJJwbdOOhfvl_DZ_p44JLfBZgCoYRddK9AMbH93akjb-Zu9DV8czYCl4eszA/exec";
+
+function kirim(){
+  const from=document.getElementById("from").value;
+  const to=document.getElementById("to").value;
+  const pesan1=document.getElementById("pesan1").value;
+  const pesan2=document.getElementById("pesan2").value;
+  const pesan3=document.getElementById("pesan3").value;
+  const remark=document.getElementById("remark").value;
+
+  if(!from||!to||!pesan1){
+    document.getElementById("status").style.color="red";
+    document.getElementById("status").innerText="Harap isi semua pertanyaan wajib!";
+    return;
+  }
+
+  document.getElementById("status").innerText="Mengirim...";
+
+  fetch(API,{
+    method:"POST",
+    body:JSON.stringify({from,to,pesan1,pesan2,pesan3,remark})
+  })
+  .then(res=>res.json())
+  .then(()=>{
+    document.body.innerHTML=`
+      <div style="max-width:500px;margin:120px auto;text-align:center;font-family:Arial">
+        <h2>🎉 Respons Anda telah direkam</h2>
+        <p>Terima kasih telah mengirimkan pesan.</p>
+      </div>`;
+  });
+}
+</script>
+
+</body>
+</html>
