@@ -1,166 +1,228 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>HMMI Love Letter Untold</title>
 
+<!-- Google Font (mirip Google Form) -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 <style>
+:root{
+  --purple:#673ab7;
+  --purple-dark:#5e35b1;
+  --border:#dadce0;
+  --text:#202124;
+  --muted:#5f6368;
+  --bg:#f0ebf8;
+}
+*{box-sizing:border-box}
 body{
-  font-family:Roboto,Arial;
-  background:#f0ebf8;
-  padding:40px;
+  margin:0;
+  font-family:'Roboto', Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-.form-box{
+/* Header ala Google Form */
+.header{
+  background:var(--purple);
+  height:120px;
+}
+
+.container{
   max-width:640px;
-  margin:auto;
+  margin:-80px auto 40px;
+  padding:0 16px;
 }
 
 .card{
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  margin-bottom:15px;
-  box-shadow:0 1px 4px rgba(0,0,0,0.15);
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+  overflow:hidden;
+  margin-bottom:16px;
 }
 
-.header{
-  border-top:8px solid #673ab7;
+.title-card{
+  padding:24px 24px 8px;
+  border-top:10px solid var(--purple);
 }
 
 h1{
-  margin:0;
   font-size:26px;
+  font-weight:500;
+  margin:0 0 8px 0;
 }
 
-.desc{
-  margin-top:10px;
-  color:#555;
-}
-
-label{
-  font-weight:600;
+.description{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:16px;
 }
 
 .required{
-  color:red;
+  color:#d93025;
+  font-size:13px;
+  margin-bottom:12px;
 }
 
-input,textarea{
+.question{
+  padding:18px 24px 24px;
+  border-top:1px solid var(--border);
+}
+
+.question-title{
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.star{color:#d93025;margin-left:4px}
+
+input, textarea{
   width:100%;
-  margin-top:10px;
-  padding:12px;
-  border-radius:6px;
-  border:1px solid #ccc;
+  border:none;
+  border-bottom:1px solid var(--border);
+  padding:10px 2px;
   font-size:15px;
+  outline:none;
+  font-family:inherit;
 }
 
-textarea{
-  height:100px;
-  resize:none;
+textarea{resize:vertical;min-height:70px}
+
+input:focus, textarea:focus{
+  border-bottom:2px solid var(--purple);
+}
+
+.submit-box{
+  padding:16px 24px 24px;
 }
 
 button{
-  background:#673ab7;
+  background:var(--purple);
   color:white;
   border:none;
-  padding:12px 22px;
-  border-radius:6px;
-  font-size:15px;
+  padding:10px 24px;
+  border-radius:4px;
+  font-size:14px;
   cursor:pointer;
 }
-
-button:hover{
-  background:#5b33a6;
-}
+button:hover{background:var(--purple-dark)}
 
 .footer{
+  text-align:center;
   font-size:12px;
-  color:#777;
-  margin-top:20px;
+  color:var(--muted);
+  margin-top:18px;
+}
+
+/* halaman sukses */
+.success{
+  display:none;
+  text-align:center;
+  padding:40px 24px;
+}
+.success h2{
+  color:var(--purple);
+  font-weight:500;
 }
 </style>
-
 </head>
-
 <body>
 
-<div class="form-box">
+<div class="header"></div>
 
-<div class="card header">
-<h1>HMMI Love Letter Untold</h1>
-<p class="desc">
-Ketika Anda mengirimkan formulir ini, itu tidak akan secara otomatis mengumpulkan detail Anda seperti nama dan alamat email kecuali Anda memberikannya sendiri.
-</p>
-<p><b>Wajib diisi</b></p>
-</div>
+<div class="container">
 
-<div class="card">
-<label>1. From <span class="required">*</span></label>
-<input id="from" placeholder="Masukkan jawaban Anda">
-</div>
+  <!-- FORM -->
+  <form id="formPage">
+    <div class="card">
+      <div class="title-card">
+        <h1>HMMI Love Letter Untold</h1>
+        <div class="description">
+          Ketika Anda mengirimkan formulir ini, itu tidak akan secara otomatis mengumpulkan detail Anda seperti nama dan alamat email kecuali Anda memberikannya sendiri.
+        </div>
+        <div class="required">* Wajib diisi</div>
+      </div>
 
-<div class="card">
-<label>2. To <span class="required">*</span></label>
-<input id="to" placeholder="Masukkan jawaban Anda">
-</div>
+      <div class="question">
+        <div class="question-title">1. From <span class="star">*</span></div>
+        <input id="from" required placeholder="Masukkan jawaban Anda">
+      </div>
 
-<div class="card">
-<label>3. Tuliskan Tiga Pesan Yang ingin disampaikan <span class="required">*</span></label>
-<textarea id="pesan1" placeholder="Pesan pertama"></textarea>
-<textarea id="pesan2" placeholder="Pesan kedua"></textarea>
-<textarea id="pesan3" placeholder="Pesan ketiga"></textarea>
-</div>
+      <div class="question">
+        <div class="question-title">2. To <span class="star">*</span></div>
+        <input id="to" required placeholder="Masukkan jawaban Anda">
+      </div>
 
-<div class="card">
-<label>4. Remark</label>
-<textarea id="remark" placeholder="Masukkan jawaban Anda"></textarea>
-</div>
+      <div class="question">
+        <div class="question-title">3. Tulisakan Tiga Pesan Yang ingin disampaikan</div>
+        <textarea id="pesan1" placeholder="Pesan pertama"></textarea>
+        <br><br>
+        <textarea id="pesan2" placeholder="Pesan kedua"></textarea>
+        <br><br>
+        <textarea id="pesan3" placeholder="Pesan ketiga"></textarea>
+      </div>
 
-<button onclick="kirim()">Kirim</button>
+      <div class="question">
+        <div class="question-title">4. Remark</div>
+        <textarea id="remark" placeholder="Masukkan jawaban Anda"></textarea>
+      </div>
 
-<div id="status" style="margin-top:15px;font-weight:600;"></div>
+      <div class="submit-box">
+        <button type="submit">Kirim</button>
+      </div>
+    </div>
 
-<div class="footer">
-Jangan pernah memberitahukan kata sandi Anda. Laporkan penyalahgunaan
-</div>
+    <div class="footer">
+      Jangan pernah memberitahukan kata sandi Anda. Laporkan penyalahgunaan
+    </div>
+  </form>
+
+  <!-- SUCCESS PAGE -->
+  <div class="card success" id="successPage">
+    <h2>🎉 Respons Anda telah direkam</h2>
+    <p>Terima kasih telah mengirimkan pesan.</p>
+  </div>
 
 </div>
 
 <script>
-const API="https://script.google.com/macros/s/AKfycbyJ7SfcttmJJwbdOOhfvl_DZ_p44JLfBZgCoYRddK9AMbH93akjb-Zu9DV8czYCl4eszA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6h_XVsCj8_VPJn6gR0AiLG2XedXr93L-FNzOKedQczlDqM7_Psh1LVHMmmQKHmVvg/exec";
 
-function kirim(){
-  const from=document.getElementById("from").value;
-  const to=document.getElementById("to").value;
-  const pesan1=document.getElementById("pesan1").value;
-  const pesan2=document.getElementById("pesan2").value;
-  const pesan3=document.getElementById("pesan3").value;
-  const remark=document.getElementById("remark").value;
+const form = document.getElementById("formPage");
+const successPage = document.getElementById("successPage");
 
-  if(!from||!to||!pesan1){
-    document.getElementById("status").style.color="red";
-    document.getElementById("status").innerText="Harap isi semua pertanyaan wajib!";
-    return;
-  }
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
 
-  document.getElementById("status").innerText="Mengirim...";
+  const data={
+    from:document.getElementById("from").value.trim(),
+    to:document.getElementById("to").value.trim(),
+    pesan1:document.getElementById("pesan1").value.trim(),
+    pesan2:document.getElementById("pesan2").value.trim(),
+    pesan3:document.getElementById("pesan3").value.trim(),
+    remark:document.getElementById("remark").value.trim()
+  };
 
-  fetch(API,{
+  const res = await fetch(SCRIPT_URL,{
     method:"POST",
-    body:JSON.stringify({from,to,pesan1,pesan2,pesan3,remark})
-  })
-  .then(res=>res.json())
-  .then(()=>{
-    document.body.innerHTML=`
-      <div style="max-width:500px;margin:120px auto;text-align:center;font-family:Arial">
-        <h2>🎉 Respons Anda telah direkam</h2>
-        <p>Terima kasih telah mengirimkan pesan.</p>
-      </div>`;
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(data)
   });
-}
+
+  const json = await res.json();
+
+  if(json.status==="success"){
+    form.style.display="none";
+    successPage.style.display="block";
+    window.scrollTo({top:0,behavior:'smooth'});
+  }else{
+    alert(json.message || "Gagal mengirim");
+  }
+});
 </script>
 
 </body>
