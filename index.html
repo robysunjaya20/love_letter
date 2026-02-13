@@ -4,226 +4,88 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>HMMI Love Letter Untold</title>
-
-<!-- Google Font (mirip Google Form) -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --purple:#673ab7;
-  --purple-dark:#5e35b1;
-  --border:#dadce0;
-  --text:#202124;
-  --muted:#5f6368;
-  --bg:#f0ebf8;
-}
+:root{--purple:#673ab7;--purple-dark:#5e35b1;--border:#dadce0;--text:#202124;--muted:#5f6368;--bg:#f0ebf8}
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Roboto', Arial, Helvetica, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* Header ala Google Form */
-.header{
-  background:var(--purple);
-  height:120px;
-}
-
-.container{
-  max-width:640px;
-  margin:-80px auto 40px;
-  padding:0 16px;
-}
-
-.card{
-  background:#fff;
-  border-radius:8px;
-  box-shadow:0 1px 3px rgba(0,0,0,.2);
-  overflow:hidden;
-  margin-bottom:16px;
-}
-
-.title-card{
-  padding:24px 24px 8px;
-  border-top:10px solid var(--purple);
-}
-
-h1{
-  font-size:26px;
-  font-weight:500;
-  margin:0 0 8px 0;
-}
-
-.description{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:16px;
-}
-
-.required{
-  color:#d93025;
-  font-size:13px;
-  margin-bottom:12px;
-}
-
-.question{
-  padding:18px 24px 24px;
-  border-top:1px solid var(--border);
-}
-
-.question-title{
-  font-size:16px;
-  margin-bottom:10px;
-}
-
+body{margin:0;font-family:'Roboto',Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+.header{background:var(--purple);height:120px}
+.container{max-width:640px;margin:-80px auto 40px;padding:0 16px}
+.card{background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.2);overflow:hidden;margin-bottom:16px}
+.title-card{padding:24px 24px 8px;border-top:10px solid var(--purple)}
+h1{font-size:26px;font-weight:500;margin:0 0 8px 0}
+.description{font-size:14px;color:var(--muted);margin-bottom:16px}
+.required{color:#d93025;font-size:13px;margin-bottom:12px}
+.question{padding:18px 24px 24px;border-top:1px solid var(--border)}
+.question-title{font-size:16px;margin-bottom:10px}
 .star{color:#d93025;margin-left:4px}
-
-input, textarea{
-  width:100%;
-  border:none;
-  border-bottom:1px solid var(--border);
-  padding:10px 2px;
-  font-size:15px;
-  outline:none;
-  font-family:inherit;
-}
-
+input,textarea{width:100%;border:none;border-bottom:1px solid var(--border);padding:10px 2px;font-size:15px;outline:none;font-family:inherit}
 textarea{resize:vertical;min-height:70px}
-
-input:focus, textarea:focus{
-  border-bottom:2px solid var(--purple);
-}
-
-.submit-box{
-  padding:16px 24px 24px;
-}
-
-button{
-  background:var(--purple);
-  color:white;
-  border:none;
-  padding:10px 24px;
-  border-radius:4px;
-  font-size:14px;
-  cursor:pointer;
-}
+input:focus,textarea:focus{border-bottom:2px solid var(--purple)}
+.submit-box{padding:16px 24px 24px}
+button{background:var(--purple);color:white;border:none;padding:10px 24px;border-radius:4px;font-size:14px;cursor:pointer}
 button:hover{background:var(--purple-dark)}
-
-.footer{
-  text-align:center;
-  font-size:12px;
-  color:var(--muted);
-  margin-top:18px;
-}
-
-/* halaman sukses */
-.success{
-  display:none;
-  text-align:center;
-  padding:40px 24px;
-}
-.success h2{
-  color:var(--purple);
-  font-weight:500;
-}
+.footer{text-align:center;font-size:12px;color:var(--muted);margin-top:18px}
+.success{display:none;text-align:center;padding:40px 24px}
+.success h2{color:var(--purple);font-weight:500}
 </style>
 </head>
 <body>
-
 <div class="header"></div>
-
 <div class="container">
-
-  <!-- FORM -->
-  <form id="formPage">
-    <div class="card">
-      <div class="title-card">
-        <h1>HMMI Love Letter Untold</h1>
-        <div class="description">
-          Ketika Anda mengirimkan formulir ini, itu tidak akan secara otomatis mengumpulkan detail Anda seperti nama dan alamat email kecuali Anda memberikannya sendiri.
-        </div>
-        <div class="required">* Wajib diisi</div>
-      </div>
-
-      <div class="question">
-        <div class="question-title">1. From <span class="star">*</span></div>
-        <input id="from" required placeholder="Masukkan jawaban Anda">
-      </div>
-
-      <div class="question">
-        <div class="question-title">2. To <span class="star">*</span></div>
-        <input id="to" required placeholder="Masukkan jawaban Anda">
-      </div>
-
-      <div class="question">
-        <div class="question-title">3. Tulisakan Tiga Pesan Yang ingin disampaikan</div>
-        <textarea id="pesan1" placeholder="Pesan pertama"></textarea>
-        <br><br>
-        <textarea id="pesan2" placeholder="Pesan kedua"></textarea>
-        <br><br>
-        <textarea id="pesan3" placeholder="Pesan ketiga"></textarea>
-      </div>
-
-      <div class="question">
-        <div class="question-title">4. Remark</div>
-        <textarea id="remark" placeholder="Masukkan jawaban Anda"></textarea>
-      </div>
-
-      <div class="submit-box">
-        <button type="submit">Kirim</button>
-      </div>
+<form id="formPage">
+  <div class="card">
+    <div class="title-card">
+      <h1>HMMI Love Letter Untold</h1>
+      <div class="description">Ketika Anda mengirimkan formulir ini, itu tidak akan secara otomatis mengumpulkan detail Anda seperti nama dan alamat email kecuali Anda memberikannya sendiri.</div>
+      <div class="required">* Wajib diisi</div>
     </div>
-
-    <div class="footer">
-      Jangan pernah memberitahukan kata sandi Anda. Laporkan penyalahgunaan
+    <div class="question">
+      <div class="question-title">1. From <span class="star">*</span></div>
+      <input id="from" required placeholder="Masukkan jawaban Anda">
     </div>
-  </form>
-
-  <!-- SUCCESS PAGE -->
-  <div class="card success" id="successPage">
-    <h2>🎉 Respons Anda telah direkam</h2>
-    <p>Terima kasih telah mengirimkan pesan.</p>
+    <div class="question">
+      <div class="question-title">2. To <span class="star">*</span></div>
+      <input id="to" required placeholder="Masukkan jawaban Anda">
+    </div>
+    <div class="question">
+      <div class="question-title">3. Tulisakan Tiga Pesan Yang ingin disampaikan</div>
+      <textarea id="pesan1" placeholder="Pesan pertama"></textarea>
+      <br><br>
+      <textarea id="pesan2" placeholder="Pesan kedua"></textarea>
+      <br><br>
+      <textarea id="pesan3" placeholder="Pesan ketiga"></textarea>
+    </div>
+    <div class="question">
+      <div class="question-title">4. Remark</div>
+      <textarea id="remark" placeholder="Masukkan jawaban Anda"></textarea>
+    </div>
+    <div class="submit-box"><button type="submit">Kirim</button></div>
   </div>
-
+  <div class="footer">Jangan pernah memberitahukan kata sandi Anda. Laporkan penyalahgunaan</div>
+</form>
+<div class="card success" id="successPage">
+  <h2>🎉 Respons Anda telah direkam</h2>
+  <p>Terima kasih telah mengirimkan pesan.</p>
 </div>
-
+</div>
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJ7SfcttmJJwbdOOhfvl_DZ_p44JLfBZgCoYRddK9AMbH93akjb-Zu9DV8czYCl4eszA/exec";
-
-const form = document.getElementById("formPage");
-const successPage = document.getElementById("successPage");
-
-form.addEventListener("submit", async (e)=>{
+const form=document.getElementById("formPage");
+const successPage=document.getElementById("successPage");
+form.addEventListener("submit",function(e){
   e.preventDefault();
-
-  const data={
-    from:document.getElementById("from").value.trim(),
-    to:document.getElementById("to").value.trim(),
-    pesan1:document.getElementById("pesan1").value.trim(),
-    pesan2:document.getElementById("pesan2").value.trim(),
-    pesan3:document.getElementById("pesan3").value.trim(),
-    remark:document.getElementById("remark").value.trim()
-  };
-
-  const res = await fetch(SCRIPT_URL,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(data)
-  });
-
-  const json = await res.json();
-
-  if(json.status==="success"){
-    form.style.display="none";
-    successPage.style.display="block";
-    window.scrollTo({top:0,behavior:'smooth'});
-  }else{
-    alert(json.message || "Gagal mengirim");
-  }
+  const formData=new FormData();
+  formData.append("from",document.getElementById("from").value);
+  formData.append("to",document.getElementById("to").value);
+  formData.append("pesan1",document.getElementById("pesan1").value);
+  formData.append("pesan2",document.getElementById("pesan2").value);
+  formData.append("pesan3",document.getElementById("pesan3").value);
+  formData.append("remark",document.getElementById("remark").value);
+  fetch(SCRIPT_URL,{method:"POST",body:formData})
+    .then(()=>{form.style.display="none";successPage.style.display="block";window.scrollTo({top:0,behavior:'smooth'});})
+    .catch(()=>{alert("Gagal mengirim. Coba lagi.");});
 });
 </script>
-
 </body>
 </html>
